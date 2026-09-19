@@ -3,7 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config";
 import MenuSection from "./components/MenuSection";
 import CartDrawer from "./components/CartDrawer";
-import WhatsAppModal from "./components/WhatsAppModal";
+import WhatsAppModal from "./components/WhatsappModal";
 import AdminLogin from "./components/AdminLogin";
 import ProductManager from "./components/ProductManager";
 
