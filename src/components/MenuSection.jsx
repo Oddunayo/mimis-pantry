@@ -3,7 +3,16 @@ import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../config";
 import ProductCard from "./ProductCard";
 
-const CATEGORIES = ["all", "puff-puff", "pastries", "combos", "drinks"];
+
+const CATEGORIES = [
+  { value: "all", label: "All" },
+  { value: "puff-puff", label: "Puff-Puff" },
+  { value: "pastries", label: "Pastries" },
+  { value: "small-chops", label: "Small Chops" },
+  { value: "combos", label: "Combos" },
+  { value: "drinks", label: "Drinks" },
+];
+
 
 export default function MenuSection({ onAddToCart }) {
   const [products, setProducts] = useState([]);
@@ -41,24 +50,26 @@ export default function MenuSection({ onAddToCart }) {
       </div>
 
       {/* Category Filter Pills */}
-      <div className="flex justify-center gap-2 mb-8 overflow-x-auto pb-2">
-        {CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => {
-              setLoading(true);
-              setSelectedCategory(cat);
-            }}
-            className={`capitalize px-4 py-2 rounded-full text-xs font-semibold transition cursor-pointer ${
-              selectedCategory === cat
-                ? "bg-amber-500 text-white shadow-sm"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+      
+<div className="flex justify-center gap-2 mb-8 overflow-x-auto pb-2">
+  {CATEGORIES.map((cat) => (
+    <button
+      key={cat.value}
+      onClick={() => {
+        setLoading(true);
+        setSelectedCategory(cat.value);
+      }}
+      className={`whitespace-nowrap px-4 py-2 rounded-full text-xs font-semibold transition cursor-pointer ${
+        selectedCategory === cat.value
+          ? "bg-amber-500 text-white shadow-sm"
+          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+      }`}
+    >
+      {cat.label}
+    </button>
+  ))}
+</div>
+
 
       {/* Products Grid */}
       {loading ? (

@@ -1,3 +1,12 @@
+const CATEGORY_LABELS = {
+  "puff-puff": "Puff-Puff",
+  pastries: "Pastries",
+  "small-chops": "Small Chops",
+  combos: "Combos",
+  drinks: "Drinks",
+};
+
+
 export default function ProductCard({ product, onAddToCart }) {
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col justify-between">
@@ -9,7 +18,7 @@ export default function ProductCard({ product, onAddToCart }) {
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
           <span className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full text-xs font-bold text-amber-800 uppercase tracking-wider">
-            {product.category}
+            {CATEGORY_LABELS[product.category] || product.category}
           </span>
         </div>
         
